@@ -1,0 +1,2 @@
+elasticsearch==5.3.0
+feedparser==5.2.1
