@@ -21,7 +21,7 @@ def print_now(text):
 def SaveEntriesToDB(entriesList):
     "saves docs in given list to local elasticsearch and logs the doc indexed"
     for item in entriesList:
-        res = es.index(index="i_rsslinks_v1", 
+        res = es.index(index="i_rsslinks_v1",
                         doc_type='m_rsslinks_v1',
                         id=hashlib.sha1('_'.join([item['category'], item['link']]).encode('utf-8')).hexdigest(),  # same link can be published in different categories
                         body=item)
@@ -124,6 +124,10 @@ while True:
         # checking if rss was updated,
         # if status = 200 there is new content,
         # otherwise is status 304
+        try:
+            d.status == 200
+        except:
+            break
         if d.status == 200:
             # getting entries from rss
             entries = [{
@@ -140,4 +144,3 @@ while True:
             # updating list of last loop entries info
             folha_rss[target_rss_index]['last_loop_entry_links'] = [entry['link'] for entry in entries]
     time.sleep(15)
-
