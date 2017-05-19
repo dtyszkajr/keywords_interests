@@ -1,7 +1,7 @@
 """"Collects news links from chosen rss' feeds from folha de sao paulo and save it to local elasticsearch"""
 
 # executing this script using
-# nohup python3 -u rss__loopreader_folha.py > log-rss_loop_reader_folha.log &
+# nohup python3 -u rss_loop_reader_folha.py > log-rss_loop_reader_folha.log &
 
 import datetime
 import elasticsearch
