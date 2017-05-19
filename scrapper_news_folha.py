@@ -5,7 +5,7 @@
 # saving all of them in the local elasticsearch database
 
 # executing this script using
-# nohup python3 -u old_news_crawler_folha.py > log-old_news_crawler_folha.log &
+# nohup python3 -u scrapper_news_folha.py > log-scrapper_news_folha.log &
 
 from bs4 import BeautifulSoup
 import datetime
