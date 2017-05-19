@@ -1,3 +1,8 @@
-# Project
+# Newspaper's Articles Study
 
-in progress
+The main objective is know visitors' interests using the newspaper articles read by them.
+
+## Files Description
+* es_index_creator.sh - file with initial config for index used to save the data in elasticsearch;
+* rss_loop_reader_folha.py - script that reads rss' from folha newspaper and saves article's links in elasticsearch;
+* scrapper_news_folha.py - scraps folha's website for articles in general and saves into elasticsearch;
