@@ -5,7 +5,7 @@
 # saving all of them in the local elasticsearch database
 
 # executing this script using
-# nohup python3 -u scrapper_news_links_folha.py > log-scrapper_news_links_folha.log &
+# nohup python3 -u scrapper_commerces.py "http://www.ricardoeletro.com.br/" >> log-scrapper_commerces.log &
 
 from bs4 import BeautifulSoup
 import datetime
@@ -41,7 +41,11 @@ while True:
     # getting target url
     target_url = all_links[indice]
     # requesting target url
-    page = requests.get(target_url)
+    page = requests.get(target_url, proxies={"http": "186.211.102.57:80"})
+    if page.status_code != 200:
+        print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                                                        str(page.status_code)))
+        continue
     # parsing page
     soup = BeautifulSoup(page.text, 'html.parser')
     # generating empty list
