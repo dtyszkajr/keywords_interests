@@ -5,7 +5,8 @@
 # saving all of them in the local elasticsearch database
 
 # executing this script using
-# nohup python3 -u scrapper_commerces.py "http://www.ricardoeletro.com.br/" >> log-scrapper_commerces.log &
+# nohup python3 -u scrapper_commerces.py "http://www.ricardoeletro.com.br/" "proxy" >> log-scrapper_commerces.log &
+# nohup python3 -u scrapper_commerces.py "https://www.petz.com.br/" "regular" "selenium" >> log-scrapper_commerces.log &
 
 from bs4 import BeautifulSoup
 import datetime
@@ -14,6 +15,7 @@ import hashlib
 import requests
 import sys
 import urllib
+from selenium import webdriver
 
 
 def print_now(text):
@@ -23,7 +25,7 @@ def print_now(text):
     sys.stdout.flush()
 
 
-# initial_link = "http://www.ricardoeletro.com.br/"
+# initial_link = "https://www.petz.com.br/"
 initial_link = sys.argv[1]
 # setting string to search in domains
 domain = urllib.parse.urlsplit(initial_link).netloc.replace('www.', '').split('.')[0]
@@ -31,6 +33,10 @@ domain = urllib.parse.urlsplit(initial_link).netloc.replace('www.', '').split('.
 all_links = [initial_link]
 # connecting to elasticsearch
 es = elasticsearch.Elasticsearch()
+# initializing browser
+if len(sys.argv) > 3 and sys.argv[3] == 'selenium':
+    driver_count = 0
+    driver = webdriver.PhantomJS()
 # initializing list index
 indice = 0
 # loop
@@ -41,16 +47,34 @@ while True:
     # getting target url
     target_url = all_links[indice]
     # requesting target url
-    if len(sys.argv) > 2 and sys.argv[2] == 'proxy':
+    if len(sys.argv) > 3 and sys.argv[3] == 'selenium':
+        driver.get(target_url)
+        page_text = driver.page_source
+        driver_count += 1
+        # restarting the browser
+        if driver_count > 14:
+            driver.close()
+            driver = webdriver.PhantomJS()
+        soup = BeautifulSoup(page_text, 'html.parser')
+        if soup.find("iframe").text.find("equest unsuccessful") > -1:
+            print_now('{} request unseccessful'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
+            continue
+    elif len(sys.argv) > 2 and sys.argv[2] == 'proxy':
         page = requests.get(target_url, proxies={"http": "186.211.102.57:80"})
+        # parsing page
+        soup = BeautifulSoup(page.text, 'html.parser')
+        if page.status_code != 200:
+            print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                                                            str(page.status_code)))
+            continue
     else:
         page = requests.get(target_url)
-    if page.status_code != 200:
-        print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
-                                                        str(page.status_code)))
-        continue
-    # parsing page
-    soup = BeautifulSoup(page.text, 'html.parser')
+        # parsing page
+        soup = BeautifulSoup(page.text, 'html.parser')
+        if page.status_code != 200:
+            print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                                                            str(page.status_code)))
+            continue
     # generating empty list
     new_urls = []
     # getting all links from page
@@ -70,7 +94,7 @@ while True:
         if url not in all_links:
             all_links.append(url)
     # raw html content (stripping white space)
-    page_raw_html = ' '.join(page.text.split())
+    page_raw_html = ' '.join(str(soup).split())
     # creating link's raw content id
     link_id = hashlib.sha1(target_url.encode('utf-8')).hexdigest()
     # storing html content
