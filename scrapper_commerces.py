@@ -56,9 +56,12 @@ while True:
             driver.close()
             driver = webdriver.PhantomJS()
         soup = BeautifulSoup(page_text, 'html.parser')
-        if soup.find("iframe").text.find("equest unsuccessful") > -1:
-            print_now('{} request unseccessful'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
-            continue
+        try:
+            if soup.find("iframe").text.find("equest unsuccessful") > -1:
+                print_now('{} request unseccessful'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
+                continue
+        except:
+            pass
     elif len(sys.argv) > 2 and sys.argv[2] == 'proxy':
         page = requests.get(target_url, proxies={"http": "186.211.102.57:80"})
         # parsing page
