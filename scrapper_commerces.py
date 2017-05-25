@@ -41,7 +41,10 @@ while True:
     # getting target url
     target_url = all_links[indice]
     # requesting target url
-    page = requests.get(target_url, proxies={"http": "186.211.102.57:80"})
+    if len(sys.argv) > 2 and sys.argv[2] == 'proxy':
+        page = requests.get(target_url, proxies={"http": "186.211.102.57:80"})
+    else:
+        page = requests.get(target_url)
     if page.status_code != 200:
         print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
                                                         str(page.status_code)))
