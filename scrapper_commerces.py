@@ -46,6 +46,8 @@ def GetUrlSource(url, mode):
                             proxies={"http": "186.211.102.57:80"})
         # parsing page
         soup = BeautifulSoup(page.text, 'html.parser')
+        if page.status_code == 404:
+            retries += 1
         if page.status_code != 200:
             print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
                                                             str(page.status_code)))
@@ -56,11 +58,28 @@ def GetUrlSource(url, mode):
         page = requests.get(url)
         # parsing page
         soup = BeautifulSoup(page.text, 'html.parser')
+        if page.status_code == 404:
+            retries += 1
         if page.status_code != 200:
             print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
                                                             str(page.status_code)))
             return None
         return soup
+
+
+def RemoveFirstLinkFromToreadList():
+    # getting list of links to read next
+    toread = []
+    with open('websites_data/toread', 'r') as f:
+        for line in f:
+            toread.append(line.strip('\n'))
+    # removing url just read
+    del toread[0]
+    # writing new list of to read docs
+    with open('websites_data/toread', 'w') as f:
+        for url in toread:
+            f.write('{}\n'.format(url))
+    return toread[0]
 
 
 sys.path.append(os.getcwd())
@@ -75,6 +94,8 @@ if mode == 'selenium':
     driver = webdriver.PhantomJS()
 # setting string to search in domains
 domain = urllib.parse.urlsplit(target_url).netloc.replace('www.', '').split('.')[0]
+# setting retries
+retries = 0
 
 print_now('{} iniciando, url inicial {}, modo {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
                                                         target_url,
@@ -86,6 +107,9 @@ while True:
     if target_url is None:
         print_now('{} fim da linha'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
         break
+    if retries == 3:
+        target_url = RemoveFirstLinkFromToreadList()
+        continue
     # reading page
     print_now('{} buscando url {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
                                                             target_url))
@@ -97,6 +121,8 @@ while True:
     except:
         continue
     print_now('{} url encontrada'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
+    # reseting retries count
+    retries = 0
     # creating link's raw content id
     link_id = hashlib.sha1(target_url.encode('utf-8')).hexdigest()
     # writing webpage content to file
