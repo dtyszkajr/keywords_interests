@@ -147,7 +147,7 @@ for i in range(3):
     print_now('{} urls para ler {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
                                         str(len(toread))))
     print_now('{} primeira da fila para ler {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
-                                        str(len(toread[0]))))
+                                        str(toread[0])))
     # removing url just read
     del toread[0]
     # writing new list of to read docs
@@ -158,7 +158,7 @@ for i in range(3):
     try:
         target_url = toread[0]
         print_now('{} prox url para ler {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
-                                        str(len(target_url))))
+                                        str(target_url)))
     except:
         target_url = None
         print_now('{} acabaram as urls'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
