@@ -5,17 +5,18 @@
 # saving all of them in the local elasticsearch database
 
 # executing this script using
-# nohup python3 -u scrapper_commerces.py "http://www.ricardoeletro.com.br/" "proxy" >> log-scrapper_commerces.log &
-# nohup python3 -u scrapper_commerces.py "https://www.petz.com.br/" "regular" "selenium" >> log-scrapper_commerces.log &
+# nohup python3 -u scrapper_commerces.py "http://www.ricardoeletro.com.br/" "get-proxy" >> log-scrapper_commerces.log &
+# nohup python3 -u scrapper_commerces.py "https://www.petz.com.br/" "selenium" >> log-scrapper_commerces.log &
 
 from bs4 import BeautifulSoup
 import datetime
-import elasticsearch
 import hashlib
 import requests
 import sys
 import urllib
 from selenium import webdriver
+import gc
+import os
 
 
 def print_now(text):
@@ -25,63 +26,86 @@ def print_now(text):
     sys.stdout.flush()
 
 
-# initial_link = "https://www.petz.com.br/"
-initial_link = sys.argv[1]
-# setting string to search in domains
-domain = urllib.parse.urlsplit(initial_link).netloc.replace('www.', '').split('.')[0]
-# initializing url's list to crawl
-all_links = [initial_link]
-# connecting to elasticsearch
-es = elasticsearch.Elasticsearch()
-# initializing browser
-if len(sys.argv) > 3 and sys.argv[3] == 'selenium':
-    driver_count = 0
-    driver = webdriver.PhantomJS()
-# initializing list index
-indice = 0
-# loop
-while True:
-    # checking if there is a new link to crawl
-    if indice >= len(all_links):
-        break
-    # getting target url
-    target_url = all_links[indice]
-    # requesting target url
-    if len(sys.argv) > 3 and sys.argv[3] == 'selenium':
-        driver.get(target_url)
+def GetUrlSource(url, mode):
+    "returns url source code by chosen method"
+    if mode == 'selenium':
+        driver.get(url)
         page_text = driver.page_source
+        # counting browser requests
         driver_count += 1
-        # restarting the browser
+        # restarting the browser each 15 requests
         if driver_count > 14:
             driver.close()
             driver = webdriver.PhantomJS()
+        # parsing page source
         soup = BeautifulSoup(page_text, 'html.parser')
-        try:
-            if soup.find("iframe").text.find("equest unsuccessful") > -1:
-                print_now('{} request unseccessful'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
-                continue
-        except:
+        return soup
+    elif mode == 'get-proxy':
+        # requesting page source
+        page = requests.get(url,
+                            proxies={"http": "186.211.102.57:80"})
+        # parsing page
+        soup = BeautifulSoup(page.text, 'html.parser')
+        if page.status_code != 200:
+            print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                                                            str(page.status_code)))
+            return None
+        return soup
+    elif mode == 'get':
+        # requesting page source
+        page = requests.get(url)
+        # parsing page
+        soup = BeautifulSoup(page.text, 'html.parser')
+        if page.status_code != 200:
+            print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                                                            str(page.status_code)))
+            return None
+        return soup
+
+
+sys.path.append(os.getcwd())
+# target_url = sys.argv[1]
+# mode = sys.argv[2]  # options: selenium, get-proxy, get
+target_url = "http://www.ricardoeletro.com.br/"
+mode = 'get'
+if mode == 'selenium':
+    # starting browser requests count
+    driver_count = 0
+    # initializing browser
+    driver = webdriver.PhantomJS()
+# setting string to search in domains
+domain = urllib.parse.urlsplit(target_url).netloc.replace('www.', '').split('.')[0]
+# loop
+for i in range(3):
+    # while True:
+    # checking if there is a new link to crawl
+    if target_url is None:
+        break
+    # reading page
+    try:
+        page_html = GetUrlSource(target_url, mode)
+        # verifying for errors
+        if page_html is None:
             pass
-    elif len(sys.argv) > 2 and sys.argv[2] == 'proxy':
-        page = requests.get(target_url, proxies={"http": "186.211.102.57:80"})
-        # parsing page
-        soup = BeautifulSoup(page.text, 'html.parser')
-        if page.status_code != 200:
-            print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
-                                                            str(page.status_code)))
-            continue
-    else:
-        page = requests.get(target_url)
-        # parsing page
-        soup = BeautifulSoup(page.text, 'html.parser')
-        if page.status_code != 200:
-            print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
-                                                            str(page.status_code)))
-            continue
+            # continue
+    except:
+        pass
+        # continue
+    # creating link's raw content id
+    link_id = hashlib.sha1(target_url.encode('utf-8')).hexdigest()
+    # writing webpage content to file
+    if os.system('[ -f websites_data/{} ]'.format(link_id)) > 0:
+        with open('websites_data/{}'.format(link_id), 'w') as f:
+            f.write(' '.join(str(page_html).split()))
+        print_now('{} scrapped link {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                                                target_url))
+        # storing link with url and sha id
+        with open('websites_data/links_list', 'a') as f:
+            f.write('{},{}\n'.format(link_id, target_url))
     # generating empty list
     new_urls = []
     # getting all links from page
-    for anchor in soup.find_all('a'):
+    for anchor in page_html.find_all('a'):
         # getting link
         link = anchor.get('href')
         # parsing urls
@@ -92,25 +116,30 @@ while True:
             new_urls.append(urllib.parse.urlunsplit((url.scheme, url.netloc, url.path, None, None)))
     # removing duplicates
     new_urls = list(set(new_urls))
-    # appending to list of links
+    # getting list of links already read
+    didread = []
+    with open('websites_data/links_list', 'r') as f:
+        for line in f:
+            didread.append(line.split(',')[0])
+    # getting list of links to read next
+    toread = []
+    with open('websites_data/toread', 'r') as f:
+        for line in f:
+            toread.append(line.strip('\n'))
+    # generating new list of urls to read
     for url in new_urls:
-        if url not in all_links:
-            all_links.append(url)
-    # raw html content (stripping white space)
-    page_raw_html = ' '.join(str(soup).split())
-    # creating link's raw content id
-    link_id = hashlib.sha1(target_url.encode('utf-8')).hexdigest()
-    # storing html content
-    res = es.index(index="i_commerceshtml_v1",
-                    doc_type='m_commerceshtml_v1',
-                    id=link_id,
-                    timeout='120s',
-                    body={
-                        'link': target_url,
-                        'domain': domain,
-                        'raw_html': page_raw_html})
-    if res['created']:
-        print_now('{} scrapped link {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
-                                                target_url))
-    # incrementing the counter
-    indice += 1
+        if hashlib.sha1(url.encode('utf-8')).hexdigest() not in didread and url not in toread:
+            toread.append(url)
+    # removing url just read
+    del toread[0]
+    # writing new list of to read docs
+    with open('websites_data/toread', 'w') as f:
+        for url in toread:
+            f.write('{}\n'.format(url))
+    # getting next url
+    try:
+        target_url = toread[0]
+    except:
+        target_url = None
+    # garbage collector
+    gc.collect()
