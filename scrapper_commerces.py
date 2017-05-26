@@ -64,10 +64,10 @@ def GetUrlSource(url, mode):
 
 
 sys.path.append(os.getcwd())
-# target_url = sys.argv[1]
-# mode = sys.argv[2]  # options: selenium, get-proxy, get
-target_url = "http://www.ricardoeletro.com.br/"
-mode = 'get'
+target_url = sys.argv[1]
+mode = sys.argv[2]  # options: selenium, get-proxy, get
+# target_url = "http://www.ricardoeletro.com.br/"
+# mode = 'get'
 if mode == 'selenium':
     # starting browser requests count
     driver_count = 0
@@ -75,6 +75,11 @@ if mode == 'selenium':
     driver = webdriver.PhantomJS()
 # setting string to search in domains
 domain = urllib.parse.urlsplit(target_url).netloc.replace('www.', '').split('.')[0]
+
+print_now('{} iniciando, url inicial {}, modo {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                                                        target_url,
+                                                        mode))
+
 # loop
 for i in range(3):
     # while True:
@@ -82,6 +87,8 @@ for i in range(3):
     if target_url is None:
         break
     # reading page
+    print_now('{} buscando url {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                                                            target_url))
     try:
         page_html = GetUrlSource(target_url, mode)
         # verifying for errors
@@ -91,6 +98,7 @@ for i in range(3):
     except:
         pass
         # continue
+    print_now('{} url encontrada'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
     # creating link's raw content id
     link_id = hashlib.sha1(target_url.encode('utf-8')).hexdigest()
     # writing webpage content to file
@@ -102,6 +110,9 @@ for i in range(3):
         # storing link with url and sha id
         with open('websites_data/links_list', 'a') as f:
             f.write('{},{}\n'.format(link_id, target_url))
+        print_now('{} url salva'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
+    else:
+        print_now('{} url ja existente'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
     # generating empty list
     new_urls = []
     # getting all links from page
@@ -116,6 +127,7 @@ for i in range(3):
             new_urls.append(urllib.parse.urlunsplit((url.scheme, url.netloc, url.path, None, None)))
     # removing duplicates
     new_urls = list(set(new_urls))
+    print_now('{} analisando links e cruzando com dados anteriores'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
     # getting list of links already read
     didread = []
     with open('websites_data/links_list', 'r') as f:
@@ -130,6 +142,12 @@ for i in range(3):
     for url in new_urls:
         if hashlib.sha1(url.encode('utf-8')).hexdigest() not in didread and url not in toread:
             toread.append(url)
+    print_now('{} urls lidas {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                                        str(len(didread))))
+    print_now('{} urls para ler {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                                        str(len(toread))))
+    print_now('{} primeira da fila para ler {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                                        str(len(toread[0]))))
     # removing url just read
     del toread[0]
     # writing new list of to read docs
@@ -139,7 +157,10 @@ for i in range(3):
     # getting next url
     try:
         target_url = toread[0]
+        print_now('{} prox url para ler {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                                        str(len(target_url))))
     except:
         target_url = None
+        print_now('{} acabaram as urls'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
     # garbage collector
     gc.collect()
