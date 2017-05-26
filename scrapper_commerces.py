@@ -66,8 +66,8 @@ def GetUrlSource(url, mode):
 sys.path.append(os.getcwd())
 target_url = sys.argv[1]
 mode = sys.argv[2]  # options: selenium, get-proxy, get
-# target_url = "http://www.ricardoeletro.com.br/"
-# mode = 'get'
+# target_url = "http://www.ricardoeletro.com.br/"  # TESTS
+# mode = 'get-proxy'  # TESTS
 if mode == 'selenium':
     # starting browser requests count
     driver_count = 0
@@ -93,11 +93,9 @@ while True:
         page_html = GetUrlSource(target_url, mode)
         # verifying for errors
         if page_html is None:
-            pass
-            # continue
+            continue
     except:
-        pass
-        # continue
+        continue
     print_now('{} url encontrada'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
     # creating link's raw content id
     link_id = hashlib.sha1(target_url.encode('utf-8')).hexdigest()
