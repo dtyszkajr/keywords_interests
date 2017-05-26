@@ -81,10 +81,10 @@ print_now('{} iniciando, url inicial {}, modo {}'.format(datetime.datetime.utcno
                                                         mode))
 
 # loop
-for i in range(3):
-    # while True:
+while True:
     # checking if there is a new link to crawl
     if target_url is None:
+        print_now('{} fim da linha'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
         break
     # reading page
     print_now('{} buscando url {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
@@ -110,7 +110,6 @@ for i in range(3):
         # storing link with url and sha id
         with open('websites_data/links_list', 'a') as f:
             f.write('{},{}\n'.format(link_id, target_url))
-        print_now('{} url salva'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
     else:
         print_now('{} url ja existente'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
     # generating empty list
@@ -146,7 +145,7 @@ for i in range(3):
                                         str(len(didread))))
     print_now('{} urls para ler {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
                                         str(len(toread))))
-    print_now('{} primeira da fila para ler {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+    print_now('{} url que sera deletada da lista {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
                                         str(toread[0])))
     # removing url just read
     del toread[0]
@@ -157,10 +156,9 @@ for i in range(3):
     # getting next url
     try:
         target_url = toread[0]
-        print_now('{} prox url para ler {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
-                                        str(target_url)))
     except:
         target_url = None
-        print_now('{} acabaram as urls'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
     # garbage collector
     gc.collect()
+
+print_now('{} fim do script'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
