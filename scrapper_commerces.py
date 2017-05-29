@@ -46,11 +46,10 @@ def GetUrlSource(url, mode):
                             proxies={"http": "186.211.102.57:80"})
         # parsing page
         soup = BeautifulSoup(page.text, 'html.parser')
-        if page.status_code == 404:
-            retries += 1
         if page.status_code != 200:
             print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
                                                             str(page.status_code)))
+            retries += 1
             return None
         return soup
     elif mode == 'get':
@@ -58,11 +57,10 @@ def GetUrlSource(url, mode):
         page = requests.get(url)
         # parsing page
         soup = BeautifulSoup(page.text, 'html.parser')
-        if page.status_code == 404:
-            retries += 1
         if page.status_code != 200:
             print_now('{} erro no request, cod {}'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
                                                             str(page.status_code)))
+            retries += 1
             return None
         return soup
 
@@ -107,7 +105,7 @@ while True:
     if target_url is None:
         print_now('{} fim da linha'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
         break
-    if retries == 3:
+    if retries >= 5:
         target_url = RemoveFirstLinkFromToreadList()
         continue
     # reading page
@@ -119,6 +117,7 @@ while True:
         if page_html is None:
             continue
     except:
+        retries += 1
         continue
     print_now('{} url encontrada'.format(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S')))
     # reseting retries count
