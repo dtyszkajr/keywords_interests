@@ -1,8 +1,8 @@
-""" Crawls extensively a website for all urls from same domain it can find"""
+""" Crawls extensively a website for all urls from same domain it can find """
 
 # starting from the home page, this script crawls every link
 # looking for more links from the same domain
-# saving teh content of each url in local files
+# saving the content of each url in local files
 
 # examples
 # executing this script using
@@ -114,6 +114,8 @@ while True:
     # checking retries to remove bad urls
     if retries >= 5:
         target_url = RemoveFirstLinkFromToreadList()
+        # resetting retries
+        retries = 0
         continue
     # reading page
     try:
