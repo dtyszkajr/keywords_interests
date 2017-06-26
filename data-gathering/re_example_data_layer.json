@@ -1,0 +1,176 @@
+
+# home #########################################################################################
+{
+  "displayingHome": "yes",
+  "pageTitle": "Ricardo Eletro aqui tem Dono, na luta pelo menor pre&ccedil;o!",
+  "categoryFilters": []
+}
+# category #########################################################################################
+{
+  "pageDepartment": "Acessórios de Informática",
+  "pageCategory": "",
+  "pageSubCategory": "",
+  "pageDepartmentID": 4523,
+  "pageCategoryID": 0,
+  "pageSubCategoryID": 0,
+  "pageTitle": "Ricardo Eletro aqui tem Dono, na luta pelo menor pre&ccedil;o!",
+  "categoryFilters": [],
+  "productList": [
+    {
+      "id": "575237",
+      "sku": "654402",
+      "name": "Multifuncional Jato de Tinta HP Deskjet Ink Advantage 2136 - Resolução de 4800dpi, Conexão USB, Velocidade de 20ppm Preto e 16ppm Cores - F5S30A#AK4",
+      "price": "299"
+    },
+    {
+      "id": "605318",
+      "sku": "681109",
+      "name": "Multifuncional Jato de Tinta Térmico HP DeskJet Ink Advantage 3776 com Wi-Fi, 64MB de Memória Interna, Velocidade de 8ppm em Preto e 5,5ppm em Cores",
+      "price": "449"
+    },
+    {
+      "id": "609140",
+      "sku": "684436",
+      "name": "Multifuncional Jato de Tinta HP DeskJet Ink Advantage 3786 - Resolução de 4800dpi, Wi-Fi, Conexão USB, Velocidade de 8ppm em Preto e 5,5ppm em Cores",
+      "price": "469"
+    }
+  ]
+}
+# search #########################################################################################
+{
+  "searchQuery": "moto g",
+  "searchCountry": "",
+  "searchCity": "",
+  "searchProducts": [
+    {
+      "id": "592867",
+      "name": "Smartphone Motorola Moto G4 PLUS XT1640 Branco - Dual Chip,Tela 5.5,Câmera 16MP+Frontal 5MP,Octa Core,32GB,2GB RAM,Android 6,Sensor impressão digital",
+      "sku": "670447",
+      "departmentId": 494,
+      "department": "Celulares e Telefones",
+      "price": 999
+    },
+    {
+      "id": "609187",
+      "name": "Smartphone Moto G5 Plus XT1683 Platinum - Dual Chip, 4G, Tela 5.2, Câmera 12MP Dual Pixel + Frontal 5MP, Octa Core 2.0Ghz, 32GB, 2GB RAM, Android 7.0",
+      "sku": "684480",
+      "departmentId": 494,
+      "department": "Celulares e Telefones",
+      "price": 1199
+    },
+    {
+      "id": "595922",
+      "name": "Smartphone Motorola Moto G4 Play DTV Colors XT1603 Preto - TV, Dual Chip, 4G, Tela 5, Câmera 8MP + Frontal 5MP, Quad Core 1.2 GHz,16GB,2GB RAM + Capa",
+      "sku": "674048",
+      "departmentId": 494,
+      "department": "Celulares e Telefones",
+      "price": 749.9
+    }
+  ],
+  "pageTitle": "Ricardo Eletro aqui tem Dono, na luta pelo menor pre&ccedil;o!"
+}
+# product #########################################################################################
+{
+  "pageTitle": "Ricardo Eletro aqui tem Dono, na luta pelo menor pre&ccedil;o!",
+  "displayingProductDetails": "yes",
+  "productID": "609187",
+  "productSKU": "684480",
+  "productName": "Smartphone Moto G5 Plus XT1683 Platinum - Dual Chip, 4G, Tela 5.2\", Câmera 12MP Dual Pixel + Frontal 5MP, Octa Core 2.0Ghz, 32GB, 2GB RAM, Android 7.0",
+  "productDescription": "Design sofisticado com acabamento metálico/ Sensor de impressão digital multifunção/ Câmera de 12 MP com tecnologia Dual Pixel/ Bateria que dura o dia todo e carregamento TurboPower/ Processador octa-core com 2 GHz/ Experiências Moto exclusivas   Aviso: Imagens meramente ilustrativas.",
+  "productEAN13": "",
+  "productPrice": 1199,
+  "productAvailable": "yes",
+  "productUrl": "http://www.ricardoeletro.com.br/Produto/Smartphone-Moto-G5-Plus-XT1683-Platinum-Dual-Chip-4G-Tela-52-Camera-12MP-Dual-Pixel-Frontal-5MP-Octa-Core-20Ghz-32GB-2GB-RAM-Android-70/44-491-494-609187",
+  "productPhoto": "http://images.maquinadevendas.com.br/produto/684480_5052300_20170307110908.jpg",
+  "productBrand": "Motorola",
+  "productOldPrice": 1499,
+  "productDiscountPrice": 1199,
+  "productStock": 188,
+  "productPhotoNonSecure": "http://images.maquinadevendas.com.br/produto/684480_5052300_20170307110908.jpg",
+  "productPhotoSecure": "https://www.imgeletro.com.br/produto/684480_5052300_20170307110908.jpg",
+  "pageDepartmentID": 44,
+  "pageCategoryID": 491,
+  "pageSubCategoryID": 494,
+  "productSKUList": [
+    {
+      "id": "609190",
+      "sku": "684483",
+      "name": "Smartphone Moto G5 Plus XT1683 Ouro - Dual Chip, 4G, Tela 5.2\", Câmera 12MP Dual Pixel + Frontal 5MP, Octa Core 2.0Ghz, 32GB, 2GB RAM, Android 7.0",
+      "description": "Design sofisticado com acabamento metálico/ Sensor de impressão digital multifunção/ Câmera de 12 MP com tecnologia Dual Pixel/ Bateria que dura o dia todo e carregamento TurboPower/ Processador octa-core com 2 GHz/ Experiências Moto exclusivas   Aviso: Imagens meramente ilustrativas.",
+      "old_price": 1499,
+      "price": 1199,
+      "installment": {
+        "count": 10,
+        "price": 119.9
+      },
+      "stock": 387,
+      "available": "yes",
+      "image": "http://images.maquinadevendas.com.br/produto/684483_5052314_20170307111136.jpg",
+      "image_ssl": "https://www.imgeletro.com.br/produto/684483_5052314_20170307111136.jpg",
+      "url": "http://www.ricardoeletro.com.br/Produto/Smartphone-Moto-G5-Plus-XT1683-Ouro-Dual-Chip-4G-Tela-52-Camera-12MP-Dual-Pixel-Frontal-5MP-Octa-Core-20Ghz-32GB-2GB-RAM-Android-70/44-491-494-609190",
+      "visibility": "visible",
+      "specs": {
+        "Escolha a Cor": "Ouro"
+      }
+    },
+    {
+      "id": "609187",
+      "sku": "684480",
+      "name": "Smartphone Moto G5 Plus XT1683 Platinum - Dual Chip, 4G, Tela 5.2\", Câmera 12MP Dual Pixel + Frontal 5MP, Octa Core 2.0Ghz, 32GB, 2GB RAM, Android 7.0",
+      "description": "Design sofisticado com acabamento metálico/ Sensor de impressão digital multifunção/ Câmera de 12 MP com tecnologia Dual Pixel/ Bateria que dura o dia todo e carregamento TurboPower/ Processador octa-core com 2 GHz/ Experiências Moto exclusivas   Aviso: Imagens meramente ilustrativas.",
+      "old_price": 1499,
+      "price": 1199,
+      "installment": {
+        "count": 10,
+        "price": 119.9
+      },
+      "stock": 187,
+      "available": "yes",
+      "image": "http://images.maquinadevendas.com.br/produto/684480_5052300_20170307110908.jpg",
+      "image_ssl": "https://www.imgeletro.com.br/produto/684480_5052300_20170307110908.jpg",
+      "url": "http://www.ricardoeletro.com.br/Produto/Smartphone-Moto-G5-Plus-XT1683-Platinum-Dual-Chip-4G-Tela-52-Camera-12MP-Dual-Pixel-Frontal-5MP-Octa-Core-20Ghz-32GB-2GB-RAM-Android-70/44-491-494-609187",
+      "visibility": "visible",
+      "specs": {
+        "Escolha a Cor": "Platinum"
+      }
+    }
+  ],
+  "productRating": 5,
+  "productVisibility": "visible",
+  "productInstallment": {
+    "count": 10,
+    "price": 119.9
+  },
+  "productFeatures": {
+    "Fabricante": "Motorola",
+    "Diferencial": "Design sofisticado com acabamento metálico/ Sensor de impressão digital multifunção",
+    "Modelo": "XT1683",
+    "Marca": "Motorola",
+    "Cor": "Platinum",
+    "Tamanho da Tela": "5.2",
+    "Resolução de Tela": "Full HD - 1920x1080",
+    "Megapixels da Câmera Traseira": "12MP Dual Pixel",
+    "Flash Traseiro": "Sim",
+    "Megapixels da Câmera Frontal": "5 MP",
+    "Flash Frontal": "Não",
+    "Resolução do Video": "Full HD - 1920x1080",
+    "Processador": "Octa-Core 2.0 GHz",
+    "Memória Interna": "32 GB",
+    "Memória Expansível Até": "128 GB",
+    "Memória RAM": "2 GB",
+    "Versão": "Android Nougat 7.0",
+    "Bateria": "3000 mAh",
+    "Capacidade de Chip": "Dual Chip",
+    "Possui TV?": "Sim",
+    "Conexão Internet": "4G",
+    "Tipo de Câmera": "Frontal e Traseira",
+    "Observações": "Sinal de TV depende da disponibilidade de sinal de tv digital em sua localidade/ Memoria expansivel por cartão MicroSD vendido separadamente"
+  },
+  "pageDepartment": "Celulares e Telefones",
+  "pageCategory": "Smartphones",
+  "pageSubCategory": "Motorola/ Lenovo"
+}
+# others #########################################################################################
+{
+  "pageTitle": "Ricardo Eletro aqui tem Dono, na luta pelo menor pre&ccedil;o!"
+}

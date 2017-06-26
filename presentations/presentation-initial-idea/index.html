@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>presentation-keywords-interests</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon2.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section id="abertura">
+					<h2>Classificação de Visitantes por Keywords</h2>
+					<p>
+						CE062 - Mineração de Texto - 2017
+					</p>
+					<p>
+						<small>Daniel Tyszka Jr / <a href="https://github.com/dtyszkajr/keywords_interests">github</a></small>
+					</p>
+				</section>
+
+				<section data-background-video="imgs/person-computer.mp4" data-background-color="#000000" data-background-video-loop=true data-background-video-muted=true data-transition="fade">
+					<div style="background-color: rgba(0, 43, 54, 0.9); color: #fff; padding: 20px;">
+					<h2>Marketing Digital</h2>
+					</div>
+				</section>
+
+				<section>
+					<h2>Por quê?</h2>
+					<span class="fragment">
+					<small>
+					<blockquote>
+					"Sei que metade da publicidade que faço é inútil. Mas não sei qual é a metade inútil."
+					</br>
+					- Fonte: Anonimo na Internet
+					</blockquote>
+					</small>
+					</span>
+					<span class="fragment">
+					<img data-src="imgs/esmagares.jpg" height="250" alt="esmagares">
+					</span>
+				</section>
+
+				<section id="estudo-de-caso">
+					<h2>Caso Aplicado</h2>
+					<span class="fragment"><p>e-commerces</p></span>
+				</section>
+
+				<section id="como">
+					<h2>Como?</h2>
+					<ul>
+						<span class="fragment"><li>Classificar Tipos de Páginas</li></span>
+						<span class="fragment"><li>Investigar Ganho de Informação por meio de Keywords</li></span>
+					</ul>
+				</section>
+
+				<section data-background="imgs/tree-animation.gif">
+				<!-- <section> -->
+					<div style="background-color: rgba(0, 43, 54, 0.90); color: #fff; padding: 20px;">
+					<h2>Classificar Tipos de Páginas</h2>
+					<ul>
+						<li>Home</li>
+						<li>Categoria</li>
+						<li>Produto</li>
+						<li>Outros</li>
+					</ul>
+					<!-- </div> -->
+				</section>
+				<section>
+					<h3>Home</h3>
+					<img height="400" data-src="imgs/re-home.png" alt="re-home" style="border: 0px">
+				</section>
+				<section>
+					<h3>Categoria</h3>
+					<img height="400" data-src="imgs/re-categoria.png" alt="re-categoria" style="border: 0px">
+				</section>
+				<section>
+					<h3>Produto</h3>
+					<img height="400" height="60%" data-src="imgs/re-produto.png" alt="re-produto" style="border: 0px">
+				</section>
+				<section>
+					<h3>Outros</h3>
+					<img height="400" data-src="imgs/re-outros.png" alt="re-outros" style="border: 0px">
+				</section>
+				<section>
+					<h3>Como diferenciar?</h3>
+					<span class="fragment"><p>Padrão de layout do site</p></span>
+					<span class="fragment"><p>Bônus: como generalizar?</p></span>
+				</section>
+
+				<section>
+					<h2>Ganho de Informação com Keywords</h2>
+					<span class="fragment">
+					<img width="550" data-src="imgs/desc-fogao1.png" alt="fogao1" style="border: 0px">
+					<img width="550" data-src="imgs/desc-fogao2.png" alt="fogao1" style="border: 0px">
+					</span>
+				</section>
+				<section>
+					<h3>Diferenciação entre Visitantes</h3>
+					<span class="fragment">
+					<table>
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>Visitante1</th>
+								<th>Visitante2</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Categoria</td>
+								<td>Fogões</td>
+								<td>Fogões</td>
+							</tr>
+							<tr class="fragment" style="color:#00779b">
+								<td>Keywords</td>
+								<td><small>vidro temperado, </br> desempenho gourmet,</br> panelas mais estáveis e seguras</small></td>
+								<td><small>grades individuais, </br> acendimento automático, </br> forno esmaltado</small></td>
+							</tr>
+						</tbody>
+					</table>
+					</span>
+				</section>
+
+				<section>
+					<h2>Dados</h2>
+					<ul>
+						<li>Conteúdo: Crawling</li>
+						<li>Visitantes: Simulação</li>
+					</ul>
+				</section>
+
+				<section data-background-video="imgs/tagcloud.mp4" data-background-color="#000000" data-background-video-loop=true data-background-video-muted=true data-transition="fade">
+					<div style="background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 20px;">
+					<h2>Classificação de Visitantes por Keywords</h2>
+					<p>
+						CE062 - Mineração de Texto - 2017
+					</p>
+					<p>
+						<small>Daniel Tyszka Jr / <a href="https://github.com/dtyszkajr/keywords_interests">github</a></small>
+					</p>
+					</div>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,312 @@
+
+
+-AO
+QUEM
+2 NOS NA
+2 DO DE
+EM
+OS
+CONTRA
+
+- TIRAR NOME DO PRODUTO
+- TIRAR EXPRESSAO AVISO IMAGENS MERAMENTE ILUSTRATIVAS
+- CANDIDATOS COM GERUNDIO (NDO) TALVEZ NAO TENHAM VALOR
+- CANDIDATOS COM APENAS VERBO NAO SAO BONS
+- emiminar: NOVO
+- emiminar: total
+
+
+####################################################################################################
+#
+[['Tigela', 'n'],['com', 'prp'],
+['revestimento', 'n'],['antiaderente', 'ec'],
+['e', 'conj_c'],['capacidade', 'n'],['para', 'prp'],['4L,', 'prop'],
+['Pode', 'v_fin'],['ser', 'v_inf'],['preparado', 'v_pcp'],['até', 'prp'],['8', 'num'],['xícaras', 'n'],['de', 'prp'],['arroz', 'n'],['cru,', 'adj'],
+['Seletor', 'prop'],['de', 'prp'],['funções', 'n'],
+['para', 'prp'],['preparar', 'v_inf'],['diversos', 'pron_det'],['tipos', 'n'],['de', 'prp'],['alimentos:', 'n'],
+['arroz,', 'adj'],
+['carnes,', 'adj'],
+['sopas,', 'punc'],
+['feijão', 'n'],
+['entre', 'prp'],['outros,', 'pron_det'],
+['Acabamento', 'prop'],['em', 'prp'],
+['aço', 'n'],['escovado,', 'adj'],
+['Mantém', 'vp'],['os', 'art'],['alimentos', 'n'],['aquecidos,', 'vp'],
+['Cordão', 'prop'],['elétrico', 'adj'],['removível,', 'v_fin'],
+['Acompanha', 'vp'],
+['espátula', 'n'],
+['e', 'conj_c'],
+['copo', 'n'],['de', 'prp'],['medida,', 'n'],
+['Proteção', 'vp'],['contra', 'prp'],['sobre', 'ec'],['pressão', 'n'],['e', 'conj-c'],['superaquecimento', 'n']
+
+n+adj
+
+n+prp+n+ec+conj_c+n+prp+prop+v_fin+v_inf+v_pcp+prp+num+n+prp+n+adj+prop+prp+n+prp+v_inf+pron_det+n+prp+n+adj+adj+punc+n+prp+pron_det+prop+prp+n+adj+vp+art+n+vp+prop+adj+v_fin+vp+n+conj_c+n+prp+n+vp+prp+ec+n+-c+n
+
+@Tigela com 
+revestimento antiaderente
+@ e capacidade para 4L, Pode ser preparado até 8 xícaras de arroz cru, 
+Seletor de funções
+@ para preparar diversos tipos de alimentos: 
+arroz
+@, 
+carnes
+@, 
+sopas
+@, 
+feijão
+@ entre outros, Acabamento em 
+aço escovado
+@, 
+Mantém os alimentos aquecidos
+@, 
+Cordão elétrico removível
+@, Acompanha 
+espátula
+@ e 
+copo de medida
+@, 
+Proteção contra sobre pressão e superaquecimento
+@.Aviso:Imagens Meramente Ilustrativas!
+------------------
+tigela
+revestimento antiaderente
+capacidade para 4l
+pode ser preparado até 8 xícaras
+arroz cru
+seletor
+funções para preparar
+tipos
+alimentos
+arroz
+carnes
+sopas
+feijão
+acabamento
+aço escovado
+mantém
+alimentos aquecidos
+cordão elétrico removível
+acompanha espátula
+copo
+medida
+proteção
+pressão
+superaquecimento
+aviso
+imagens meramente ilustrativas
+#####################################################################################################
+@Organizador alto 25 . Ideal para armazenar todo tipo de 
+material domestico
+@, 
+roupas
+@, 
+brinquedos
+@, 
+produtos de higiene
+@, etc. Ajuda na 
+economia de espaços
+@ no lar. Aviso:Imagens meramente ilustrativas.
+----------------------------------------
+organizador alto 25
+ideal para armazenar
+tipo
+material domestico
+roupas
+brinquedos
+produtos
+higiene
+etc
+ajuda
+economia
+espaços no lar
+aviso
+imagens meramente ilustrativas
+#####################################################################################################
+@*INDICADO PARA 
+TODA FORMA DE DORMIR
+@. A 
+Fibra Siliconizada
+@ é o que existe de mais 
+macio
+@ para confecção de travesseiros, sua 
+Micro espessura
+@ diminui o atrito e ocupa melhor os espaços, por isso 
+molda-se
+@ com maior facilidade a 
+anatomia do Rosto e do Corpo
+@ trazendo 
+resistência
+@ e 
+suporte na Medida Certa
+@. Os travesseiros de 
+Fibra Poliéster
+@ não provocam 
+alergia
+@ nem propagam 
+odores
+@ por terem ótimo 
+fluxo de ar entre as Fibras
+@.( **Imagem Meramente Ilustrativa. )
+-------------------------------------------------------------
+*indicado para
+forma
+dormir
+fibra siliconizada é
+existe
+macio para confecção
+travesseiros
+micro espessura diminui
+atrito
+ocupa melhor
+espaços
+molda-
+maior facilidade
+anatomia
+rosto
+corpo trazendo resistência
+suporte
+medida certa
+travesseiros
+fibra poliéster não provocam alergia
+propagam odores
+terem ótimo fluxo
+ar
+fibras
+**imagem meramente ilustrativa
+#####################################################################################################
+@O Colchão Perfil Springs Blue de 28cm de altura possui 
+Matelassê@
+@ que aumenta o 
+volume
+@ do Pillow, proporciona 
+imponência
+@ e auxilia na 
+circulação de ar
+@. Possui EuroPillow composto por 
+Espuma D33 Certificada
+@ que cria um 
+ambiente de requinte
+@ e 
+maciez
+@, além de proporcionar 
+aconchego
+@ e 
+bem estar
+@ ao deitar. O maior benefício desta espuma é o ambiente de 
+conforto
+@ e 
+estabilidade
+@ criado para a 
+coluna
+@, estas qualidades proporcionam uma 
+sensação relaxante
+@ e consequentemente um 
+sono reparador
+@. Possui 
+tecido Jacquard
+@, que são mais 
+duráveis
+@ devido ao seu processo de produção, onde cada fio de Poliéster é controlado individualmente no tear, conseguindo assim, 
+padrões mais elaborados
+@, 
+desenhos mais nítidos
+@ e um 
+brilho mais contrastante
+@. Sua faixa lateral é fabricada em 
+tecido Chenille Blue
+@, proporcionando um 
+desing requintado
+@, 
+inovador
+@ e 
+confortável
+@, devido a sua 
+maciez
+@. Confeccionado em 
+Molas Pocket
+@, ensacadas Individualmente que se 
+adaptam aos pontos de pressão do corpo
+@, pois cada mola comprime-se de acordo com a pressão exercida, fazendo com que um usuário não encomode o outro ao se movimentar sobre o colchão. Aviso Imagem meramente ilustrativa.
+-----------------------------------------------------------------
+colchão perfil springs blue
+28cm
+altura possui matelassê
+aumenta
+volume
+pillow
+proporciona imponência
+auxilia
+circulação
+ar
+possui europillow composto
+espuma d33 certificada
+cria
+ambiente
+requinte
+maciez
+além
+proporcionar aconchego
+bem estar ao deitar
+maior benefício
+espuma é
+ambiente
+conforto
+estabilidade criado para
+coluna
+qualidades proporcionam
+sensação relaxante
+consequentemente
+sono reparador
+possui tecido jacquard
+são
+duráveis devido ao
+processo
+produção
+onde cada fio
+poliéster é controlado individualmente no tear
+conseguindo
+padrões
+elaborados
+desenhos
+nítidos
+brilho
+contrastante
+faixa lateral é fabricada
+tecido chenille blue
+proporcionando
+desing requintado
+inovador
+confortável
+devido
+maciez
+confeccionado
+molas pocket
+ensacadas individualmente
+adaptam
+pontos
+pressão
+corpo
+cada mola comprime-
+acordo
+pressão exercida
+fazendo
+usuário não encomode
+ao
+movimentar
+colchão
+aviso imagem meramente ilustrativa
+#####################################################################################################
+
+
+## IDEIAS FEATURES CLASSIFIER
+breadcrumbs
+palavra frete
+strings R$ XXX
+listas links-palavras
+presenca de slide-show
+palavra especificacoes/descricao
+identificacao de grid (html-table; div-css-atributo-display:table; div css-display:flex; div css display:float) + analise inside grid
+file robots
+file sitemap
+presenca de imagens gigantes

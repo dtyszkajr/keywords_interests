@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>presentation-keywords-interests</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon2.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section id="abertura">
+					<h2>Análise de Interesse de Visitantes por Categorias e Keywords</h2>
+					<p>
+						CE062 - Mineração de Texto - 2017
+					</p>
+					<p>
+						<small>Daniel Tyszka Jr / <a href="https://github.com/dtyszkajr/keywords_interests">github</a></small>
+					</p>
+				</section>
+
+				<section id="relembrando">
+					<h3>Relembrando...</h3>
+					<img width="550" data-src="imgs/desc-fogao1.png" alt="fogao1" style="border: 0px">
+					<table>
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>Visitante1</th>
+								<th>Visitante2</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Categoria</td>
+								<td>Fogões</td>
+								<td>Fogões</td>
+							</tr>
+							<tr style="color:#00779b">
+								<td>Keywords</td>
+								<td><small>vidro temperado, </br> desempenho gourmet,</br> panelas mais estáveis e seguras</small></td>
+								<td><small>grades individuais, </br> acendimento automático, </br> forno esmaltado</small></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section id="dados">
+					<h2>Obtenção de Dados</h2>
+					<ul>
+					<li>Páginas: scrapping (40k total, 5k produtos)</li>
+					<li>Visitantes: simulação (15k)</li>
+					</ul>
+				</section>
+
+				<section id="extracao-1">
+					<h2>Extração e Classificação</h2>
+					<p>Tipo de Página e Categorias: variável "dataLayer"</p>
+					<img data-src="imgs/data_layer.png" height="400" alt="data-layer" style="border: 0px">
+				</section>
+
+				<section id="extracao-2">
+					<h2>Extração e Classificação</h2>
+					<p>Descrição do Produto: html</p>
+					<img data-src="imgs/descricao.png" height="300" alt="descricao" style="border: 0px">
+				</section>
+
+				<section id="preparacao2">
+					<h2>Tratamento de Keywords</h2>
+					<span class="fragment">
+					<img data-src="imgs/onlplogo.jpg" height="80" alt="opennlplogo" style="border: 0px">
+					</span>
+					<span class="fragment"><p>Padrões?</p></span>
+					<span class="fragment" style="font-size:50%;">
+					<table>
+						<thead>
+							<tr>
+								<th></th>
+								<th>[substantivo]</th>
+								<th>[substantivo][advérbio]</th>
+								<th>[substantivo][adjetivo]</th>
+								<th>[substantivo][preposição][substantivo]</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td>qualidade</br>produto</br>embalagem</br>caixas</br>produto</td>
+								<td>elegância à</br>utilização quando</br>noite bem</br>bambu ecologicamente</br>fato bem</td>
+								<td>sistema ciclônico</br>cabo elétrico</br>aspirador smart</br>reservatório prático</br>cabo elétrico</td>
+								<td>programas de lavagem</br>consumo de energia</br>função com acionamento</br>chapa de aço</br>kit de acessórios</td>
+							</tr>
+							
+						</tbody>
+					</table>
+					</span>
+				</section>
+
+				<section id="cruz">
+					<h2>Cruzamentos</h2>
+					<p>Dados de visitas x Dados sobre Páginas</p>
+					<a href="http://52.91.91.152/chart" target="_blank"><img data-src="imgs/graf.png" height="100" alt="grafs" style="border: 0px"></a>
+				</section>
+
+				<section id='consideracoes'>
+					<h3>Considerações Finais</h3>
+					<ul>
+					<span class="fragment"><li>ML para Categorizador e Extrator de Dados (tipo de página, categorias/departamentos, descrições de produtos)</li></span>
+					<span class="fragment"><li>OCR para descrições de produtos em imagens</li></span>
+					<span class="fragment"><li>POS Tagger em português deixa a desejar</li></span>
+					<span class="fragment"><li>Extração de keywords por padrão POS requer atenção dedicada</li></span>
+					<span class="fragment"><li>Falta de "rank de importância" nas keywords</li></span>
+					</ul>
+				</section>
+
+
+				<section data-background-video="imgs/tagcloud.mp4" data-background-color="#000000" data-background-video-loop=true data-background-video-muted=true data-transition="fade">
+					<div style="background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 20px;">
+					<h2>Análise de Interesse de Visitantes por Categorias e Keywords</h2>
+					<p>
+						CE062 - Mineração de Texto - 2017
+					</p>
+					<p>
+						<small>Daniel Tyszka Jr / <a href="https://github.com/dtyszkajr/keywords_interests">github</a></small>
+					</p>
+					</div>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
